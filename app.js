@@ -5,6 +5,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended:true}));
 const port = process.env.PORT||5555;
 const mongoose = require('mongoose');
+var mydb;
 mongoose.connect( 'mongodb+srv://anubhav:1234567890@cluster0-7pma8.gcp.mongodb.net/test?retryWrites=true&w=majority' || 'mongodb://193.17.124.1/32',function(err,db){
 
    if (err){
