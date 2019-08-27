@@ -3,11 +3,11 @@ var app = express();
 var bodyparser = require('body-parser');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended:true}));
-const port = process.env.PORT||5555;
+const port = process.env.PORT;
 const mongoose = require('mongoose');
 var mydb;
 
-mongoose.connect( 'mongodb+srv://anubhav:1234567890@cluster0-7pma8.gcp.mongodb.net/test?retryWrites=true&w=majority' || 'mongodb://127.0.0.1:27017',function(err,db){
+mongoose.connect( 'mongodb+srv://anubhav:1234567890@cluster0-7pma8.gcp.mongodb.net/test?retryWrites=true&w=majority',function(err,db){
 
    if (err){
         console.log("error",err);
@@ -32,11 +32,11 @@ app.get('/register', function (req, res) {
 app.post('/form_data', function (req, res) {
     console.log("abhi");
     console.log("req",req.body);
-    // res.send('my first post API!');
     mydb.collection('formTest').insertOne(req.body,function(err,data){
         if (err) throw err;
+        console.log('data',data);
+        // res.sendFile(__dirname + '/note.html',data);
         res.send({success:true,mydata:data});
-
     })
 });
 
