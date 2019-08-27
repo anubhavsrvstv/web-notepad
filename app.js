@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var bodyparser = require('body-parser');
 const port = process.env.PORT||5555;
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/test',function(err,db){
+const mongoose = require('mongoose');
+mongoose.connect( 'mongodb+srv://anubhav:1234567890@cluster0-7pma8.gcp.mongodb.net/test?retryWrites=true&w=majority' || 'mongodb://193.17.124.1/32',function(err,db){
 
    if (err){
         console.log("error",err);
