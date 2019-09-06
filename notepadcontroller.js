@@ -33,7 +33,7 @@ app.controller('notepadCtrl', function($scope,$http, $window) {
     //   });
   };
   
-  // this  should be same 
+  
   $scope.removeData = function (id) {
     console.log("id",id);
     $http({
