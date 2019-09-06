@@ -5,7 +5,7 @@ app.controller('notepadCtrl', function($scope,$http, $window) {
     // console.log()
     $http({
         method : "GET",
-          url : 'http://localhost:5555/getdata'
+          url : 'http://localhost:6330/getdata'
       }).then(function mySuccess(response) {
         $scope.data = response.data.data;
         console.log(response);
@@ -22,7 +22,7 @@ app.controller('notepadCtrl', function($scope,$http, $window) {
     console.log("response");
     // $http({
     //     method : "Update",
-    //       url : 'http://localhost:5555/updatedata'
+    //       url : 'http://localhost:6330/updatedata'
     //   }).then(function mySuccess(response) {
     //     $scope.data = response.data.data;
     //     console.log(response);
@@ -38,7 +38,7 @@ app.controller('notepadCtrl', function($scope,$http, $window) {
     console.log("id",id);
     $http({
         method : "POST",
-          url : 'http://localhost:5555/deleteData',
+          url : 'http://localhost:6330/deleteData',
           headers: { 'id':id,'Content-Type': 'application/json', 'Cache-Control': 'no-cache'}
       }).then(function mySuccess(response) {
         $scope.data = response.data.data;
