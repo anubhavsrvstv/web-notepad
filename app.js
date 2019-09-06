@@ -4,15 +4,12 @@ var bodyparser = require('body-parser');
 var cors = require('cors')
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+const port = process.env.PORT||5555;
+const mongoose = require('mongoose');
 app.use(cors());
 
-const port = process.env.PORT || 5555;
-const mongoose = require('mongoose');
-var mydb;
-var uri = 'mongodb://localhost:27017/test';
+mongoose.connect('mongodb+srv://anubhav:1234567890@cluster0-7pma8.gcp.mongodb.net/test?retryWrites=true&w=majority', function (err, db) {
 
-
-mongoose.connect(uri,{useNewUrlParser:true},function(err,db){
     if (err) {
         console.log("error", err);
     }
@@ -141,5 +138,4 @@ app.post('/deleteData', function (req, res) {
 var server = app.listen(port, function () {
     console.log("server started on port....." + port);
 });
-
 
