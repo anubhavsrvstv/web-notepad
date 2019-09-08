@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<style>
+	table,
+	th,
+	td {
+		border: 1px solid grey;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+
+	table tr:nth-child(odd) {
+		background-color: #f1f1f1;
+	}
+
+	table tr:nth-child(even) {
+		background-color: #ffffff;
+	}
+</style>
+<html>
+
+<head>
+	<title>Notepad</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+	<div ng-app="myApp" ng-controller="notepadCtrl" ng-init="getData();">
+
+
+		<div class="container">
+			<h2>NOTEPAD</h2>
+
+			<form>
+
+
+				<textarea type="text" ng-model="entry" placeholder="Write Here"></textarea>
+
+
+
+
+				<button  type="submit" ng-click="saveData();">POst</button>
+
+			</form>
+
+
+		</div>
+
+		<table>
+			<tr ng-repeat="value in data">
+				<td>{{ $index + 1 }}</td>
+				<td>{{value.notes}}</td>
+<!--				<td>{{value.comment }}</td>-->
+				<td><button ng-click="dataUpdate()">update</button></td>
+				<td><button ng-click='removeData(value._id)'>delete</button></td>
+
+				<!-- <td><button ng-click="dataUpdate()">update</button></td> -->
+
+
+			</tr>
+
+
+			</tr>
+		</table>
+
+	</div>
+	<script src="notepadcontroller.js"></script>
+
+
+</body>
+
+
+<!-- <script >
+    var app = angular.module('myApp', []);
+app.controller('notepadCtrl', function($scope,$http) {
+
+  $scope.getData = function() {
+    $http({
+        method : "GET",
+          url : 'http://localhost:5555/getdata'
+      }).then(function mySuccess(response) {
+        $scope.data = response.data;
+        console.log(response);
+
+      }, function myError(err) {
+          console.log(err);
+        // $scope.myWelcome = response.statusText;
+      });
+  };
+});
+</script> -->
+
+
+
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+  
+	First Name: <input type="text" ng-model="firstName"><br>
+	Last Name: <input type="text" ng-model="lastName"><br>
+	<br>
+	Full Name: {{firstName + " " + lastName}}
+	
+	</div>
+	
+	<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+	  $scope.firstName = "John";
+	  $scope.lastName = "Doe";
+	}); -->
+
+</html>
